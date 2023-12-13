@@ -3,6 +3,9 @@ kind: ActiveMQArtemis
 metadata:
   name: amq-instance
   application: amq-instance-app
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   deploymentPlan:
     image: placeholder
