@@ -1,0 +1,17 @@
+apiVersion: broker.amq.io/v1beta1
+kind: ActiveMQArtemis
+metadata:
+  name: amq-instance
+  application: amq-instance-app
+spec:
+  deploymentPlan:
+    image: placeholder
+    jolokiaAgentEnabled: false
+    journalType: nio
+    managementRBACEnabled: true
+    messageMigration: false
+    persistenceEnabled: false
+    requireLogin: false
+    size: 2
+  console:
+    expose: true
