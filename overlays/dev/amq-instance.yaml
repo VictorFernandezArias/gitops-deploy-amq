@@ -13,7 +13,7 @@ spec:
     journalType: nio
     managementRBACEnabled: true
     messageMigration: false
-    persistenceEnabled: false
+    persistenceEnabled: true
     requireLogin: false
     size: 2
   console:
