@@ -20,7 +20,7 @@ kind: Application
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
-  name: rhsso-dev
+  name: rhamq-dev
   namespace: openshift-gitops
 spec:
   destination:
