@@ -8,13 +8,53 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   deploymentPlan:
-    image: placeholder
-    jolokiaAgentEnabled: false
-    journalType: nio
-    managementRBACEnabled: true
-    messageMigration: false
-    persistenceEnabled: true
+    size: 1
+    nodeSelector:
+      flavor.prod.openshift.losheroes.cl/amq-broker: true
+    persistenceEnabled: false
     requireLogin: false
-    size: 2
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1024Mi
+      requests:
+        cpu: 250m
+        memory: 512Mi
+    messageMigration: false
+    managementRBACEnabled: true
+    journalType: nio
+    jolokiaAgentEnabled: false
+    image: placeholder
+    storage:
+      size: 4Gi
+  acceptors:
+    - port: 5672
+      verifyHost: true
+      wantClientAuth: true
+      expose: true
+      needClientAuth: true
+      multicastPrefix: /topic/
+      name: amqp
+      sslEnabled: false
+      sniHost: localhost
+      enabledProtocols: 'TLSv1,TLSv1.1,TLSv1.2'
+      protocols: amqp
+      sslProvider: JDK
+      anycastPrefix: jms.queue.
+  connectors:
+    - port: 22222
+      verifyHost: true
+      wantClientAuth: true
+      expose: true
+      host: localhost
+      needClientAuth: true
+      name: connector0
+      sslEnabled: false
+      sniHost: localhost
+      enabledProtocols: 'TLSv1,TLSv1.1,TLSv1.2'
+      sslProvider: JDK
   console:
     expose: true
+  upgrades:
+    enabled: false
+    minor: false
