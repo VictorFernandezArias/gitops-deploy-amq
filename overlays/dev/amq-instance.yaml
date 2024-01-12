@@ -9,8 +9,6 @@ metadata:
 spec:
   deploymentPlan:
     size: 1
-    nodeSelector:
-      flavor.prod.openshift.losheroes.cl/amq-broker: true
     persistenceEnabled: false
     requireLogin: false
     resources:
