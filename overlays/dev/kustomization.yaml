@@ -28,5 +28,6 @@ patches:
 resources: 
 #- namespace.yaml
 - amq-instance.yaml
+- broker-rbac.yaml
 # - sso-realms/test-client-testclient.yaml
 # - sso-realms/test-realm.yaml
